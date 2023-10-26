@@ -1,12 +1,13 @@
+
+
 {
 	"name": "Dage til juleaften",
-	"short_name": "tæl til jul",
+	"short_name": "DaysToChristmas",
 	"start_url": "./index.html",
-	"id": "./index.html",
 	"display": "standalone",
-	"background_color": "#fff",
-	"theme_color": "#fff",
-    "description": "En app som tæller til juleaften",
+	"background_color": "#0a3604",
+	"theme_color": "#0a3604",
+    "description": "En app som tæller ned til juleaften",
     "orientation": "portrait-primary",
    
     "icons": [
@@ -16,9 +17,15 @@
             "type": "image/png" 
 
         },
+        { 
+            "src": "./assets/icons/favicon-16x16.png",
+            "sizes": "16x16",
+            "type": "image/png" 
+
+        },
         {
-            "src": "./assets/icons/favicon-32x32.png",
-            "sizes": "32x32",
+            "src": "./assets/icons/android-chrome-192x192.png",
+            "sizes": "192x192",
             "type": "image/png" 
             
         }
@@ -26,11 +33,16 @@
     
     "screenshots": [
         {
-          "src": "assets/icons/mstile-150x150.png",
+          "src": "assets/screenshots/Unavngivet.png",
           "type": "image/png",
-          "sizes": "150x150",
+          "sizes": "855x1148",
           "form_factor": "wide"
-        }
+        },
+        {
+            "src": "assets/screenshots/Unavngivet.png",
+            "type": "image/png",
+            "sizes": "855x1148"
+          }
       ]
       
   }

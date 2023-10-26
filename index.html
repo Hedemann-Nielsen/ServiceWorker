@@ -6,34 +6,39 @@
 
     <link rel="manifest" href="./manifest.json">
     <link rel="stylesheet" href="./assets/css/main-style.css">
+    <script src="js/main.js" defer></script>
     <script type="module" src="serviceWorker.js" defer></script>
+    
 
+    <link rel="icon" type="image/x-icon" href="./assets/icons/favicon-32x32.png">
 
     <title>Dage til juleaften</title>
 </head>
-<script>
-    
-</script>
+
 <body>
-    
+<img src="assets/icons/android-chrome-192x192.png" alt="juletræ-icon">
     <h1>Dage til juleaften</h1>
+    <h6>24 december kl 18.00</h6>
+
     <article id="countdown_container" class="countdown-container">
         <div class="countdown-globe days">
-            <div class="daynumber">0</div>
+            <div id="daynumber">offline</div>
             <div class="title">Dage</div>
         </div>
         <div class="countdown-globe hours">
-            <div class="hoursnumber">37</div>
+            <div id="hoursnumber">offline</div>
             <div class="title">Timer</div>
         </div>
         <div class="countdown-globe minutes">
-            <div class="minutesnumber">37</div>
+            <div id="minutesnumber">offline</div>
             <div class="title">Minutter</div>
         </div>
         <div class="countdown-globe seconds">
-            <div class="secondsnumber">37</div>
+            <div id="secondsnumber">offline</div>
             <div class="title">Sekunder</div>
         </div>
     </article>
+
+  
 </body>
 </html>

@@ -1,26 +1,44 @@
-self.addEventListener('install', function (event) {
-    event.waitUntil(
-      caches.open('mysite-static-v3').then(function (cache) {
-        return cache.addAll([
-          'index.html',
-          'assets/css/main-style.css'
-        ]);
-      }),
-    );
-  });
+//navn og version på casch samling
+const staticCacheName = 'site-static-v1';
+const dynamicCacheName = 'site-dynamic-v1';
 
-  // Activate Service Worker
+const assets = [
+  './assets/css/main-style.css',
+  './assets/icons/favicon-16x16.png',
+  './assets/icons/favicon-32x32.png',
+  './assets/icons/android-chrome-192x192.png',
+  './assets/screenshots/Unavngivet.png',
+  './pages/fallback.html',
+  '/manifest.json',
+  '/index.html'
+]
+//install event
+self.addEventListener('install', (event) => {
+  console.log('service worker acticated');
+
+  event.waitUntil(
+    caches.open(staticCacheName).then(cache => {
+      console.log('skriv til alle statisk cache');
+
+      return cache.addAll(assets);
+    }),
+  );
+});
+
+
+//Activate
 self.addEventListener('activate', event => {
-    console.log('service worker acticated');
+  console.log('service worker acticated');
 
-	event.waitUntil(
-		// Rydder op i cache og sletter alle uaktuelle caches
-		caches.keys().then(keys => {
-            const filteredKeys =keys.filter(key => key !== staticCacheName)
-            filteredKeys.map(key => caches.delete(key))
-        })
-    )
-})
+event.waitUntil(
+  // Rydder op i cache og sletter alle uaktuelle caches
+  caches.keys().then(keys => {
+          const filteredKeys =keys.filter(key => key !== staticCacheName)
+          filteredKeys.map(key => caches.delete(key))
+      })
+  )
+});
+
 
 // Fetch event
 self.addEventListener('fetch', event => {
@@ -53,21 +71,5 @@ self.addEventListener('fetch', event => {
       )
         
   // Kalder limit cache funktionen
-  limitCacheSize(dynamicCacheName, 20)
+  //limitCacheSize(dynamicCacheName, 20)
 })
-
-
-// Funktion til styring af antal filer i en given cache
-const limitCacheSize = (cacheName, numberOfAllowedFiles) => {
-	// Åbn den angivede cache
-	caches.open(cacheName).then(cache => {
-		// Hent array af cache keys 
-		cache.keys().then(keys => {
-			// Hvis mængden af filer overstiger det tilladte
-			if(keys.length > numberOfAllowedFiles) {
-				// Slet første index (ældste fil) og kør funktion igen indtil antal er nået
-				cache.delete(keys[0]).then(limitCacheSize(cacheName, numberOfAllowedFiles))
-			}
-		})
-	})
-}
