@@ -1,0 +1,36 @@
+{
+	"name": "Dage til juleaften",
+	"short_name": "tæl til jul",
+	"start_url": "./index.html",
+	"id": "./index.html",
+	"display": "standalone",
+	"background_color": "#fff",
+	"theme_color": "#fff",
+    "description": "En app som tæller til juleaften",
+    "orientation": "portrait-primary",
+   
+    "icons": [
+        { 
+            "src": "./assets/icons/favicon-16x16.png",
+            "sizes": "16x16",
+            "type": "image/png" 
+
+        },
+        {
+            "src": "./assets/icons/favicon-32x32.png",
+            "sizes": "32x32",
+            "type": "image/png" 
+            
+        }
+    ],
+    
+    "screenshots": [
+        {
+          "src": "assets/icons/mstile-150x150.png",
+          "type": "image/png",
+          "sizes": "150x150",
+          "form_factor": "wide"
+        }
+      ]
+      
+  }
