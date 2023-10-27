@@ -4,9 +4,7 @@ const dynamicCacheName = 'site-dynamic-v1';
 
 const assets = [
   './assets/css/main-style.css',
-  './assets/icons/favicon-16x16.png',
-  './assets/icons/favicon-32x32.png',
-  './assets/icons/android-chrome-192x192.png',
+  './assets/icons/android/android-launchericon-192-192.png',
   './assets/screenshots/Unavngivet.png',
   './pages/fallback.html',
   '/manifest.json',
@@ -70,6 +68,21 @@ self.addEventListener('fetch', event => {
         })
       )
         
-  // Kalder limit cache funktionen
-  //limitCacheSize(dynamicCacheName, 20)
+  // Kald evt. limit cache funktion
+ 
 })
+
+
+
+
+self.addEventListener('push', event => {
+  const options = {
+    body: 'Her er en besked fra service workeren',
+    icon: './assets/icons/android/android-launchericon-72-72.png',
+    // other options...
+  };
+
+  event.waitUntil(
+    self.registration.showNotification('Notification Title', options)
+  );
+});

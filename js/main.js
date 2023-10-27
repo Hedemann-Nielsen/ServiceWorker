@@ -45,3 +45,32 @@ if('serviceWorker' in navigator) {
 	.then(reg => console.log('service worker registered', reg))
 	.catch(err => console.error('service worker not registered', err)) 
 }
+
+if (Notification.permission === 'granted') {
+    // Permission already granted, proceed to subscribe
+    subscribeToPushNotifications();
+  } else if (Notification.permission !== 'denied') {
+    // Request permission from the user
+    Notification.requestPermission().then(permission => {
+      if (permission === 'granted') {
+        // Permission granted, proceed to subscribe
+        subscribeToPushNotifications();
+      } else {
+        // Permission denied, handle accordingly
+      }
+    });
+  }
+
+  function subscribeToPushNotifications() {
+    self.registration.pushManager.subscribe({
+      userVisibleOnly: true,
+      applicationServerKey: 'your_public_key'
+    })
+    .then(subscription => {
+      // Send the subscription object to your server for future use
+      sendSubscriptionToServer(subscription);
+    })
+    .catch(error => {
+      // Handle any errors that occur during subscription
+    });
+  }
